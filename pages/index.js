@@ -1,27 +1,31 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { checkUser } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+import RegisterForm from '../components/forms/RegisterForm';
 
 function Home() {
   const { user } = useAuth();
-  return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
-    </div>
-  );
+  const router = useRouter();
+  const [authUser, setAuthUser] = useState({});
+
+  useEffect(() => {
+    checkUser(user.uid).then(setAuthUser);
+  }, []);
+
+  const onUpdate = () => {
+    checkUser(user.uid).then((data) => {
+      setAuthUser(data);
+    });
+  };
+
+  if (authUser.uid === user.uid) {
+    router.push('/dashboard');
+    return null;
+  }
+
+  return <RegisterForm user={user} updateUser={onUpdate} />;
 }
 
 export default Home;
