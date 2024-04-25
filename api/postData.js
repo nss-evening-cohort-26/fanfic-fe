@@ -1,7 +1,9 @@
 import { clientCredentials } from '../utils/client';
 
+const endpoint = clientCredentials.databaseURL;
+
 const getAllPosts = () => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/posts`, {
+  fetch(`${endpoint}/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -17,8 +19,8 @@ const getAllPosts = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getSinglePost = (postId) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/posts/${postId}`, {
+const getSinglePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +32,7 @@ const getSinglePost = (postId) => new Promise((resolve, reject) => {
 });
 
 const createPost = (payload) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/posts`, {
+  fetch(`${endpoint}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -42,13 +44,12 @@ const createPost = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deletePost = (payload) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/posts`, {
+const deletePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
@@ -56,8 +57,8 @@ const deletePost = (payload) => new Promise((resolve, reject) => {
 });
 
 const updatePost = (payload) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/posts/${payload.id}`, {
-    method: 'PUT',
+  fetch(`${endpoint}/posts/${payload.id}`, {
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -68,10 +69,23 @@ const updatePost = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUserPosts = (userId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/user/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   getAllPosts,
   getSinglePost,
   createPost,
   deletePost,
   updatePost,
+  getUserPosts,
 };
