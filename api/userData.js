@@ -1,5 +1,7 @@
+import { clientCredentials } from '../utils/client';
+
 const getSingleUser = (id) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7074/api/users/${id}`, {
+  fetch(`${clientCredentials.databaseURL}/users/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +13,7 @@ const getSingleUser = (id) => new Promise((resolve, reject) => {
 });
 
 const updateUser = (payload) => new Promise((resolve, reject) => {
-  fetch(`https://localhost:7074/api/users/${payload.id}`, {
+  fetch(`${clientCredentials.databaseURL}/users/${payload.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -24,7 +26,7 @@ const updateUser = (payload) => new Promise((resolve, reject) => {
 });
 
 const createUser = (payload) => new Promise((resolve, reject) => {
-  fetch('https://localhost:7074/api/users/', {
+  fetch(`${clientCredentials.databaseURL}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
