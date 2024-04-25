@@ -9,13 +9,8 @@ const getPostCategories = (categoryId) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch posts');
-      }
-      return response.json();
-    })
-    .then((data) => resolve(data))
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
 
