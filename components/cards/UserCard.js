@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../../utils/context/authContext';
 
 export default function UserCard() {
   const { user } = useAuth();
