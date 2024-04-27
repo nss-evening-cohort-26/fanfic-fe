@@ -4,15 +4,15 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import getSingleUser from '../../api/userData';
-// import { getSingleCategory } from '../../api/categoryData';
+import { getSingleCategory } from '../../api/categoryData';
 
 function PostCard({ postObj }) {
   const [author, setAuthor] = useState({});
-  // const [category, setCategory] = useState({});
+  const [category, setCategory] = useState({});
 
   useEffect(() => {
     getSingleUser(postObj.userId).then(setAuthor);
-    // getSingleCategory(postObj.categoryId).then(setCategory);
+    getSingleCategory(postObj.categoryId).then(setCategory);
   }, [postObj]);
 
   return (
@@ -20,7 +20,7 @@ function PostCard({ postObj }) {
       <Card.Body>
         <Card.Title>{postObj.title}</Card.Title>
         <p className="card-text bold">{postObj.content}</p>
-        {/* <p className="card-text bold">{category.label}</p> */}
+        <p className="card-text bold">{category.label}</p>
         <p className="card-text bold">{author.firstName} {author.lastName}</p>
         <Link href={`/post/${postObj.id}`} passHref>
           <Button variant="primary" className="m-2">View</Button>
