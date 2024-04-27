@@ -1,5 +1,10 @@
 import React from 'react';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Dashboard() {
-  return <h1>This is the dashboard</h1>;
+  const { user } = useAuth();
+
+  return (
+    <h1>Hello {user.firstName}! Welcome back.</h1>
+  );
 }
