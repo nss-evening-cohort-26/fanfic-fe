@@ -34,14 +34,11 @@ export default function PostForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = {
-      ...formInput,
-      userId: user.id,
-    };
     if (obj.id) {
       updatePost(formInput).then(() => router.push(`/post/${obj.id}`));
     } else {
-      createPost(payload).then(router.push('/feed'));
+      const payload = { ...formInput, userId: user.id };
+      createPost(payload).then(() => router.push('/feed'));
     }
   };
 
