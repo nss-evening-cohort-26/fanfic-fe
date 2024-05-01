@@ -91,6 +91,17 @@ const getPostDetails = async (postId) => {
   return { ...post, category, author };
 };
 
+const searchPosts = async (searchValue, userId) => {
+  const allPosts = await getAllPosts(userId);
+
+  const filteredPosts = await allPosts.filter((post) => (
+    post.title.toLowerCase().includes(searchValue)
+    || post.content.toLowerCase().includes(searchValue)
+  ));
+
+  return filteredPosts;
+};
+
 export {
   getAllPosts,
   getSinglePost,
@@ -99,4 +110,5 @@ export {
   updatePost,
   getUserPosts,
   getPostDetails,
+  searchPosts,
 };
