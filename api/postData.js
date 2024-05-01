@@ -27,7 +27,7 @@ const getSinglePost = (id) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then((data) => resolve(data[0]))
     .catch(reject);
 });
 
