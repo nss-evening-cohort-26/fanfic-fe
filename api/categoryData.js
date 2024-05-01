@@ -9,7 +9,7 @@ const getPostCategories = (categoryId) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   })
-    .then(console.warn((response) => response.json()))
+    .then((response) => response.json())
     .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
