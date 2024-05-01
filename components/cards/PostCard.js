@@ -35,14 +35,14 @@ function PostCard({ postObj, onUpdate }) {
           <Button variant="primary" className="m-2">View</Button>
         </Link>
         {user?.id === author?.id && (
-        <>
+        <div className="postBtns">
           <Link href={`/post/edit/${postObj.id}`} passHref>
             <Button variant="info">Edit</Button>
           </Link>
           <Button variant="danger" onClick={deleteThisPost} className="m-2">
             DELETE
           </Button>
-        </>
+        </div>
         )}
       </Card.Body>
     </Card>
