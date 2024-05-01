@@ -6,10 +6,13 @@ import Link from 'next/link';
 import getSingleUser from '../../api/userData';
 import { getSingleCategory } from '../../api/categoryData';
 import { deletePost } from '../../api/postData';
+import { useAuth } from '../../utils/context/authContext';
 
 function PostCard({ postObj, onUpdate }) {
   const [author, setAuthor] = useState({});
   const [category, setCategory] = useState({});
+  const { user } = useAuth();
+
   const deleteThisPost = () => {
     if (window.confirm('Delete?')) {
       deletePost(postObj.id).then(() => onUpdate());
@@ -31,12 +34,16 @@ function PostCard({ postObj, onUpdate }) {
         <Link href={`/post/${postObj.id}`} passHref>
           <Button variant="primary" className="m-2">View</Button>
         </Link>
-        <Link href={`/post/edit/${postObj.id}`} passHref>
-          <Button variant="info">Edit</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisPost} className="m-2">
-          DELETE
-        </Button>
+        {user?.id === author?.id && (
+        <>
+          <Link href={`/post/edit/${postObj.id}`} passHref>
+            <Button variant="info">Edit</Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisPost} className="m-2">
+            DELETE
+          </Button>
+        </>
+        )}
       </Card.Body>
     </Card>
   );
