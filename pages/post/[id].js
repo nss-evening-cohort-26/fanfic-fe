@@ -10,6 +10,7 @@ export default function ViewPost() {
 
   useEffect(() => {
     getPostDetails(id).then(setPostDetails);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
