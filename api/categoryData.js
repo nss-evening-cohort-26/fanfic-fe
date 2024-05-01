@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const getPostCategories = (categoryId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/posts/categories/${categoryId}`, {
+  fetch(`${endpoint}/posts/category/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -26,7 +26,26 @@ const getSingleCategory = (categoryId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getAllCategories = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/categories`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 export {
   getPostCategories,
   getSingleCategory,
+  getAllCategories,
 };

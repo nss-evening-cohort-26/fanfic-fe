@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { useAuth } from '../../utils/context/authContext';
@@ -17,13 +16,3 @@ export default function UserCard() {
     </Card>
   );
 }
-
-UserCard.propTypes = {
-  user: PropTypes.shape({
-    image: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    email: PropTypes.string,
-    bio: PropTypes.string,
-  }).isRequired,
-};
