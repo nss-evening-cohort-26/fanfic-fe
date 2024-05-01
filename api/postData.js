@@ -1,4 +1,6 @@
 import { clientCredentials } from '../utils/client';
+import { getSingleCategory } from './categoryData';
+import getSingleUser from './userData';
 
 const endpoint = clientCredentials.databaseURL;
 
@@ -81,6 +83,14 @@ const getUserPosts = (userId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPostDetails = async (postId) => {
+  const post = await getSinglePost(postId);
+  const category = await getSingleCategory(post.categoryId);
+  const author = await getSingleUser(post.userId);
+
+  return { ...post, category, author };
+};
+
 export {
   getAllPosts,
   getSinglePost,
@@ -88,4 +98,5 @@ export {
   deletePost,
   updatePost,
   getUserPosts,
+  getPostDetails,
 };
