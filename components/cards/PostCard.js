@@ -5,10 +5,19 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import getSingleUser from '../../api/userData';
 import { getSingleCategory } from '../../api/categoryData';
+import { deletePost } from '../../api/postData';
+import { useAuth } from '../../utils/context/authContext';
 
-function PostCard({ postObj }) {
+function PostCard({ postObj, onUpdate }) {
   const [author, setAuthor] = useState({});
   const [category, setCategory] = useState({});
+  const { user } = useAuth();
+
+  const deleteThisPost = () => {
+    if (window.confirm('Delete?')) {
+      deletePost(postObj.id).then(() => onUpdate());
+    }
+  };
 
   useEffect(() => {
     getSingleUser(postObj.userId).then(setAuthor);
@@ -25,9 +34,16 @@ function PostCard({ postObj }) {
         <Link href={`/post/${postObj.id}`} passHref>
           <Button variant="primary" className="m-2">View</Button>
         </Link>
-        <Link href={`/post/edit/${postObj.id}`} passHref>
-          <Button variant="info">Edit</Button>
-        </Link>
+        {user?.id === author?.id && (
+        <div className="postBtns">
+          <Link href={`/post/edit/${postObj.id}`} passHref>
+            <Button variant="info">Edit</Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisPost} className="m-2">
+            DELETE
+          </Button>
+        </div>
+        )}
       </Card.Body>
     </Card>
   );
@@ -42,6 +58,7 @@ PostCard.propTypes = {
     userId: PropTypes.number,
     id: PropTypes.number,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default PostCard;
