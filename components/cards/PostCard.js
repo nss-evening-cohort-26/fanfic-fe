@@ -25,7 +25,7 @@ function PostCard({ postObj, onUpdate }) {
   }, [postObj]);
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card key={postObj.id} style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{postObj.title}</Card.Title>
         <p className="card-text bold">{postObj.content}</p>
