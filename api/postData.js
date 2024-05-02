@@ -91,16 +91,18 @@ const getPostDetails = async (postId) => {
   return { ...post, category, author };
 };
 
-const searchPosts = async (searchValue, userId) => {
-  const allPosts = await getAllPosts(userId);
-
-  const filteredPosts = await allPosts.filter((post) => (
-    post.title.toLowerCase().includes(searchValue)
-    || post.content.toLowerCase().includes(searchValue)
-  ));
-
-  return filteredPosts;
-};
+const searchPosts = (searchValue) => fetch(`https://localhost:7074/posts/search?searchValue=${searchValue}`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  });
 
 export {
   getAllPosts,

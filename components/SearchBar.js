@@ -1,41 +1,24 @@
-import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { Form, FormControl } from 'react-bootstrap';
 
 export default function SearchBar() {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const router = useRouter();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSearchInput((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setSearchValue(e.target.value.toLowerCase());
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchInput !== '') {
-      router.push(`/search/${searchInput.search}`);
-    } else {
-      router.push('/feed');
-    }
-    setSearchInput('');
+    if (searchValue !== '') router.push(`/search/${searchValue}`);
+    setSearchValue('');
   };
 
   return (
-    <Form className="d-flex" onSubmit={handleSubmit}>
-      <Form.Control
-        type="search"
-        placeholder="Search"
-        className="me-2"
-        aria-label="Search"
-        name="search"
-        value={searchInput.search}
-        onChange={handleChange}
-      />
-      <Button variant="outline-success" type="submit">Search</Button>
+    <Form id="search-bar" className="search-bar" onSubmit={handleSubmit}>
+      <FormControl type="text" placeholder="Search Posts" size="med" onChange={handleChange} value={searchValue} />
     </Form>
   );
 }
