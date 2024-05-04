@@ -1,26 +1,16 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import Image from 'next/image';
 import { signIn } from '../utils/auth';
 
 function Signin() {
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        margin: '0 auto',
-        zIndex: 1,
-        minHeight: '25rem',
-        width: '100%',
-        minWidth: '30rem',
-        paddingBlock: '0 5rem',
-      }}
-    >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+    <div className="text-center pt-52">
+      <div>
+        <Image src="/images/login.png" alt="Plothole" height={400} width={400} />
+      </div>
+      <Button type="button" size="md" className="hover:text-[#e6627d] roboto-condensed-buttons bg-transparent border-none text-2xl" onClick={signIn}>
+        SIGN IN
       </Button>
     </div>
   );

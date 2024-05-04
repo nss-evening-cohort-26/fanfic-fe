@@ -17,8 +17,8 @@ export default function SearchBar() {
   };
 
   return (
-    <Form id="search-bar" className="search-bar" onSubmit={handleSubmit}>
-      <FormControl type="text" placeholder="Search Posts" size="med" onChange={handleChange} value={searchValue} />
+    <Form id="search-bar" className="pt-[10px] search-bar" onSubmit={handleSubmit}>
+      <FormControl type="text" placeholder="Search Posts" size="sm" className="rounded-full" onChange={handleChange} value={searchValue} />
     </Form>
   );
 }
