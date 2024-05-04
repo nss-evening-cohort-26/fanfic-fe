@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { deleteComment } from '../../api/commentData';
+import { useAuth } from '../../utils/context/authContext';
+import getSingleUser from '../../api/userData';
 
 function CommentCard({ commentObj }) {
+  const [author, setAuthor] = useState({});
+  const { user } = useAuth();
+
+  useEffect(() => {
+    getSingleUser(commentObj.authorId).then(setAuthor);
+  }, []);
+
   const removeComment = () => {
     if (window.confirm('Remove comment?')) {
       deleteComment(commentObj.postId, commentObj.id).then(window.location.reload());
@@ -21,9 +30,11 @@ function CommentCard({ commentObj }) {
         <p className="text-white mx-3" style={{ backgroundImage: 'none' }}>
           {commentObj.content}
         </p>
-        <div>
-          <Button variant="dark" size="md" onClick={removeComment}>Delete</Button>
-        </div>
+        {user?.id === author?.id && (
+          <div>
+            <Button variant="dark" size="md" onClick={removeComment}>Delete</Button>
+          </div>
+        )}
       </Card>
     </div>
   );
@@ -36,7 +47,7 @@ CommentCard.propTypes = {
     createdOn: PropTypes.string,
     user: PropTypes.string,
     postId: PropTypes.number,
-    userId: PropTypes.number,
+    authorId: PropTypes.number,
   }).isRequired,
   obj: PropTypes.shape({
     id: PropTypes.number,
