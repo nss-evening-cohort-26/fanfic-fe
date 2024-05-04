@@ -10,15 +10,14 @@ export default function NavBar() {
   return (
     <Navbar bg="dark" variant="dark" className="nav">
       <div>
-        <Image src="/images/logo.png" alt="Plothole" height={40} width={300} />
+        <Link passHref href="/feed">
+          <Image src="/images/logo.png" alt="Plothole" height={40} width={300} />
+        </Link>
       </div>
       <div className="flex right-nav fw-semibold">
         <Nav className="gap-1">
-          <Link passHref href="/">
-            <Nav.Link className="pt-[11px] text-[#C84D85]">Home</Nav.Link>
-          </Link>
-          <Link passHref href="/feed">
-            <Nav.Link className="pt-[11px] text-[#C84D85]">Feed</Nav.Link>
+          <Link passHref href="/post/new">
+            <Nav.Link className="pt-[11px] text-[#C84D85]">Write</Nav.Link>
           </Link>
           <SearchBar />
         </Nav>
