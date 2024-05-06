@@ -12,14 +12,15 @@ export default function NavBar() {
     <Navbar bg="dark" variant="dark" className="nav">
       <div>
         <Link passHref href="/feed">
-          <Image src="/images/logo.png" alt="Plothole" height={40} width={300} />
+          <Image src="/images/logo.png" alt="Plothole" height={40} width={300} className="cursor-pointer" />
         </Link>
       </div>
       <div className="flex right-nav fw-semibold">
         <Nav className="gap-1">
           <Link passHref href="/post/new">
             <Nav.Link className="pt-[11px] flex gap-1 text-[#C84D85]">
-              <IoCreateOutline className="w-6 h-6 mt-[2px]" /> Write
+              <IoCreateOutline className="w-6 h-6" />
+              <span className="pt-[2px]">Write</span>
             </Nav.Link>
           </Link>
           <SearchBar />

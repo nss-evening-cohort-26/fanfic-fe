@@ -25,24 +25,28 @@ function PostCard({ postObj, onUpdate }) {
   }, [postObj]);
 
   return (
-    <Card key={postObj.id} style={{ width: '18rem', margin: '10px' }}>
+    <Card key={postObj.id} style={{ margin: '10px' }}>
       <Card.Body>
         <Card.Title>{postObj.title}</Card.Title>
         <p className="card-text bold">{postObj.content}</p>
         <p className="card-text bold">{category.label}</p>
-        <p className="card-text bold">{author.firstName} {author.lastName}</p>
+        <p className="card-text bold">
+          {author.firstName} {author.lastName}
+        </p>
         <Link href={`/post/${postObj.id}`} passHref>
-          <Button variant="primary" className="m-2">View</Button>
+          <Button variant="primary" className="m-2">
+            View
+          </Button>
         </Link>
         {user?.id === author?.id && (
-        <div className="postBtns">
-          <Link href={`/post/edit/${postObj.id}`} passHref>
-            <Button variant="info">Edit</Button>
-          </Link>
-          <Button variant="danger" onClick={deleteThisPost} className="m-2">
-            DELETE
-          </Button>
-        </div>
+          <div className="postBtns">
+            <Link href={`/post/edit/${postObj.id}`} passHref>
+              <Button variant="info">Edit</Button>
+            </Link>
+            <Button variant="danger" onClick={deleteThisPost} className="m-2">
+              DELETE
+            </Button>
+          </div>
         )}
       </Card.Body>
     </Card>
