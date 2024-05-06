@@ -16,11 +16,11 @@ function Posts() {
   }, []);
 
   return (
-    <div className="text-center my-4">
+    <div>
       <Link href="/post/new" passHref>
-        <Button>New Post</Button>
+        <Button variant="dark">New Post</Button>
       </Link>
-      <div className="d-flex flex-wrap">
+      <div>
         {posts.map((post) => (
           <PostCard key={post.id} postObj={post} onUpdate={getAllThePosts} />
         ))}
