@@ -89,3 +89,22 @@ body {
   background: inherit;
   border-bottom: 1px solid rgb(100, 116, 139);
 }
+
+.post-card {
+  color: #f8f9fa;
+  background-color: #0d0d0d;
+  margin: 20px 0;
+  border-bottom: 1px solid #ff5687;
+
+  .badge.text-dark, .card-text {
+    margin-bottom: 20px;
+  }
+
+  .badge {
+    margin-right: 10px;
+  }
+
+  button {
+    margin: 10px 10px 0 0;
+  }
+}

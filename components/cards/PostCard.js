@@ -25,29 +25,26 @@ function PostCard({ postObj, onUpdate }) {
   }, [postObj]);
 
   return (
-    <Card key={postObj.id} bg="dark" text="light" style={{ marginTop: 20, marginBottom: 20 }} className="mb-2">
-      <Card.Header>
-        <Badge bg="light" text="dark">{author.firstName} {author.lastName}</Badge>
-      </Card.Header>
+    <Card key={postObj.id} className="post-card">
       <Card.Body>
+        <Badge bg="light" text="dark">@{author.firstName} {author.lastName}</Badge>
+        <Badge bg="secondary">{category.label}</Badge>
         <Card.Title>{postObj.title}</Card.Title>
         <Card.Text>{postObj.content}</Card.Text>
-        <br />
-        <Badge bg="secondary">{category.label}</Badge>
-      </Card.Body>
-      <Card.Footer>
-        <Button className="text-light" variant="link">
-          <Link href={`/post/${postObj.id}`} passHref>View</Link>
-        </Button>
-        {user?.id === author?.id && (
+        <div className="post-btns">
+          <Button variant="outline-light">
+            <Link href={`/post/${postObj.id}`} passHref>View</Link>
+          </Button>
+          {user?.id === author?.id && (
           <>
-            <Button className="text-light" variant="link">
+            <Button variant="outline-light">
               <Link href={`/post/edit/${postObj.id}`} passHref>Edit</Link>
             </Button>
-            <Button className="text-light" variant="link" onClick={deleteThisPost}>Delete</Button>
+            <Button variant="outline-light" onClick={deleteThisPost}>Delete</Button>
           </>
-        )}
-      </Card.Footer>
+          )}
+        </div>
+      </Card.Body>
     </Card>
   );
 }
