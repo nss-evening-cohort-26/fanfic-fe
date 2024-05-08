@@ -90,19 +90,36 @@ const getPostDetails = async (postId) => {
   return { ...post, category, author };
 };
 
-const searchPosts = (searchValue) => fetch(`https://localhost:7074/posts/search?searchValue=${searchValue}`, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  });
+const searchPosts = (searchValue) => {
+  const url = `https://localhost:7074/search?searchValue=${searchValue}`;
 
+  return fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => data.map((post) => ({
+      id: post.id,
+      userId: post.user.id,
+      user: post.user,
+      title: post.title,
+      content: post.content,
+      categoryId: post.categoryId,
+      categories: post.categories,
+      comments: post.comments,
+    })))
+    .catch((error) => {
+      console.error('Error searching posts:', error);
+      throw error;
+    });
+};
 export {
   getAllPosts,
   getSinglePost,

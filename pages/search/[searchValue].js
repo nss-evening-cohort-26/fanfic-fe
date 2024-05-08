@@ -11,7 +11,9 @@ export default function Search() {
 
   const searchAllPosts = () => {
     searchPosts(searchValue)
-      .then(setFilteredPosts)
+      .then((posts) => {
+        setFilteredPosts(posts);
+      })
       .catch((error) => console.error('Error searching posts:', error));
   };
 
