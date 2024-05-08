@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Button } from 'react-bootstrap';
 import { getAllPosts } from '../api/postData';
 import PostCard from '../components/cards/PostCard';
 
@@ -16,11 +14,8 @@ function Posts() {
   }, []);
 
   return (
-    <div>
-      <Link href="/post/new" passHref>
-        <Button variant="dark">New Post</Button>
-      </Link>
-      <div>
+    <div className="text-center my-4">
+      <div className="d-flex flex-wrap">
         {posts.map((post) => (
           <PostCard key={post.id} postObj={post} onUpdate={getAllThePosts} />
         ))}

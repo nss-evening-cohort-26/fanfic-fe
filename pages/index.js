@@ -21,7 +21,7 @@ function Home() {
   };
 
   if (authUser.uid === user.uid) {
-    router.push('/dashboard');
+    router.push('/feed');
     return null;
   }
 
