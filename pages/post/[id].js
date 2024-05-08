@@ -5,6 +5,7 @@ import { getPostDetails } from '../../api/postData';
 import CommentForm from '../../components/forms/CommentForm';
 import CommentCard from '../../components/cards/CommentCard';
 import { getPostComments } from '../../api/commentData';
+import PostCard from '../../components/cards/PostCard';
 
 export default function ViewPost() {
   const [postDetails, setPostDetails] = useState({});
@@ -19,15 +20,8 @@ export default function ViewPost() {
   }, []);
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
-      <div className="text-white ms-5 details">
-        <h5>
-          {postDetails.author?.firstName} {postDetails.author?.lastName}
-        </h5>
-        <p>{postDetails?.title}</p>
-        <p>{postDetails?.content}</p>
-        <p>{postDetails.category?.label}</p>
-      </div>
+    <div className="flex flex-col">
+      <PostCard className="post-details" key={postDetails?.id} postObj={postDetails} />
       <div className="mt-5 d-flex justify-content-center">
         <CommentForm postId={postDetails?.id} key={commentDetails.id} />
       </div>
