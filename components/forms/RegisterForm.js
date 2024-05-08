@@ -31,28 +31,30 @@ function RegisterForm() {
   };
 
   return (
-    <div className="mt-16 flex justify-center">
-      <Form onSubmit={handleSubmit} className="w-96">
-        <Form.Group className="mb-3" controlId="formBasicFirstName">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter first name" name="firstName" value={formData.firstName} onChange={handleChange} className="input rounded-none" required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicLastName">
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter last name" name="lastName" value={formData.lastName} onChange={handleChange} className="input rounded-none" required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="text" placeholder="Enter email" name="email" value={formData.email} onChange={handleChange} className="input rounded-none" required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicBio">
-          <Form.Label>Bio</Form.Label>
-          <Form.Control type="text" as="textarea" placeholder="Enter bio" name="bio" value={formData.bio} onChange={handleChange} className="input rounded-none" required />
-        </Form.Group>
-        <Button type="submit" className="bg-slate-800 border-none hover:bg-slate-800 text-white font-semibold rounded-sm mt-2">
-          {user.id ? 'Update' : 'Register'}
-        </Button>
-      </Form>
+    <div className="flex w-[500px] mx-auto inter-normal">
+      <div className="mx-auto mt-32">
+        <Form onSubmit={handleSubmit} className="w-96">
+          <Form.Group className="mb-3" controlId="formBasicFirstName">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter first name" name="firstName" value={formData.firstName} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicLastName">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter last name" name="lastName" value={formData.lastName} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" placeholder="Enter email" name="email" value={formData.email} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicBio">
+            <Form.Label>Bio</Form.Label>
+            <Form.Control type="text" as="textarea" placeholder="Enter bio" name="bio" value={formData.bio} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
+          <Button type="submit" className="bg-slate-800 border-none hover:bg-slate-800 text-white font-semibold rounded-sm mt-2">
+            {user.id ? 'Update' : 'Register'}
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 }

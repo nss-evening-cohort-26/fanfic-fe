@@ -110,7 +110,7 @@ body {
 }
 
 ::placeholder {
-  color: white !important;
+  /* color: white !important; */
   opacity: 0.4 !important;
 }
 
@@ -120,7 +120,7 @@ body {
 
 .sidebar {
   border-right: 1px solid;
-  border-right-color: rgba(0, 0, 0, 0.3);
+  border-right-color: rgba(85, 82, 82, 0.614);
   display: block;
   clip-path: inset(0);
   margin-top: 60px;
@@ -131,7 +131,7 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
-  background: #a637ac;
+  background: #000000;
 }
 
 .borders {
