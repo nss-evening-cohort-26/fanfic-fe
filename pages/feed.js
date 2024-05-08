@@ -33,8 +33,8 @@ function Posts() {
                 </div>
               </div>
             </aside>
-            <main className="flex w-full ml-[300px]">
-              <div className="mr-auto pl-[12px] pr-[12px] w-full pt-4 pb-8">
+            <main className="flex w-[1100px] pl-[200px] mx-auto">
+              <div className="flex-grow mx-auto pl-[12px] pr-[12px] w-full pt-4 pb-8">
                 <article className="flex flex-col w-full mt-[60px]">
                   {posts.map((post) => (
                     <PostCard key={post.id} postObj={post} onUpdate={getAllThePosts} />
