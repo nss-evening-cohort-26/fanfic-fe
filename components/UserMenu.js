@@ -14,7 +14,7 @@ export default function UserMenu() {
   };
 
   return (
-    <Dropdown align="end" navbar="true" className="last:mt-auto">
+    <Dropdown align="end" navbar="true" className="pt-1 last:mt-auto">
       <Dropdown.Toggle className="border-none bg-transparent">
         <img src={user.image} alt={`${user.firstName} ${user.lastName}`} className="h-8 w-8 rounded-full" />
       </Dropdown.Toggle>

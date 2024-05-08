@@ -19,7 +19,8 @@ export default function NavBar() {
         <Nav className="gap-1">
           <Link passHref href="/post/new">
             <Nav.Link className="pt-[11px] flex gap-1 text-[#C84D85]">
-              <IoCreateOutline className="w-6 h-6 mt-[2px]" /> Write
+              <IoCreateOutline className="w-6 h-6" />
+              <span className="pt-[2px]">Write</span>
             </Nav.Link>
           </Link>
           <SearchBar />
