@@ -27,7 +27,7 @@ function RegisterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerUser(formData).then(router.push('/dashboard'));
+    registerUser(formData).then(router.push('/profile'));
   };
 
   return (

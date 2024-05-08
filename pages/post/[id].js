@@ -15,12 +15,12 @@ export default function ViewPost() {
   useEffect(() => {
     getPostDetails(id).then(setPostDetails);
     getPostComments(id).then(setCommentDetails);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
-      <div className="text-white ms-5 details">
+    <div className="flex flex-col inter-normal">
+      <div className="text-white ms-5 details mt-[60px]">
         <h5>
           {postDetails.author?.firstName} {postDetails.author?.lastName}
         </h5>
@@ -28,13 +28,15 @@ export default function ViewPost() {
         <p>{postDetails?.content}</p>
         <p>{postDetails.category?.label}</p>
       </div>
-      <div className="mt-5 d-flex justify-content-center">
-        <CommentForm postId={postDetails?.id} key={commentDetails.id} />
-      </div>
-      <div className="d-flex gap-2 flex-column flex-sm-wrap">
-        {commentDetails[0]?.map((comments) => (
-          <CommentCard commentObj={comments} key={comments.Id} currentUser={comments.userId} />
-        ))}
+      <div className="w-3/4 mx-auto">
+        <div className="mt-5 flex justify-content-center">
+          <CommentForm postId={postDetails?.id} key={commentDetails.id} />
+        </div>
+        <div className="flex flex-column">
+          {commentDetails[0]?.map((comments) => (
+            <CommentCard commentObj={comments} key={comments.Id} currentUser={comments.userId} />
+          ))}
+        </div>
       </div>
     </div>
   );

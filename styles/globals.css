@@ -85,13 +85,32 @@ body {
   border: none;
   border-bottom: 1px solid rgb(100, 116, 139);
   background: inherit;
+  color: white;
 }
 
 .input:focus {
+  color: white;
   outline: none !important;
   box-shadow: none !important;
   background: inherit;
   border-bottom: 1px solid rgb(100, 116, 139);
+}
+
+.select {
+  border: 1px solid rgb(100, 116, 139);
+  background: inherit;
+}
+
+.select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  background: inherit;
+  border: 1px solid rgb(100, 116, 139);
+}
+
+::placeholder {
+  color: white !important;
+  opacity: 0.4 !important;
 }
 
 .flexing {
@@ -106,4 +125,16 @@ body {
   margin-top: 60px;
   width: 300px;
   will-change: width;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.borders {
+  border-bottom: 2px solid #c84d85 !important;
+  border-right: none;
+  border-top: none;
+  border-left: none;
 }

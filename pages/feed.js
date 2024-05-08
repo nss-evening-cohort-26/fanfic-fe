@@ -21,7 +21,7 @@ function Posts() {
             <aside className="sidebar">
               <div className="h-full max-h-screen sticky top-0">
                 <div className="flex flex-col h-full">
-                  <p className="text-2xl inter-bold mb-2 text-center mt-3">Categories</p>
+                  <h2 className="text-2xl inter-bold mb-2 text-center mt-3">Categories</h2>
                   <nav>
                     <ul className="list-none text-center">
                       <li>Category 1</li>
@@ -33,7 +33,7 @@ function Posts() {
                 </div>
               </div>
             </aside>
-            <main className="flex-grow w-full">
+            <main className="flex w-full ml-[300px]">
               <div className="mr-auto pl-[12px] pr-[12px] w-full pt-4 pb-8">
                 <article className="flex flex-col w-full mt-[60px]">
                   {posts.map((post) => (

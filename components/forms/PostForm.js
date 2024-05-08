@@ -43,61 +43,38 @@ export default function PostForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Label>{obj.id ? 'Update' : 'Create'} Post</Form.Label>
+    <div className="flex w-[500px] mx-auto inter-normal">
+      <div className="flex-grow mt-32">
+        <Form onSubmit={handleSubmit}>
+          <Form.Label>{obj.id ? 'Update' : 'Create'} Post</Form.Label>
 
-      {/* TITLE INPUT  */}
-      <Form.Group controlId="formTitle" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter a title"
-          name="title"
-          value={formInput.title}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+          {/* TITLE INPUT  */}
+          <Form.Group controlId="formTitle" className="mb-3">
+            <Form.Control type="text" placeholder="Enter a title" name="title" value={formInput.title} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
 
-      {/* POST CONTENT TEXTAREA  */}
-      <Form.Group controlId="formContent" className="mb-3">
-        <Form.Control
-          as="textarea"
-          placeholder="Content"
-          style={{ height: '100px' }}
-          name="content"
-          value={formInput.content}
-          onChange={handleChange}
-          required
-        />
-      </Form.Group>
+          {/* POST CONTENT TEXTAREA  */}
+          <Form.Group controlId="formContent" className="mb-3">
+            <Form.Control as="textarea" placeholder="Content" style={{ height: '100px' }} name="content" value={formInput.content} onChange={handleChange} className="input rounded-none" required />
+          </Form.Group>
 
-      {/* CATEGORY SELECT  */}
-      <Form.Group controlId="formSelect" className="mb-3">
-        <Form.Select
-          aria-label="Category"
-          name="categoryId"
-          onChange={handleChange}
-          className="mb-3"
-          value={obj.categoryId}
-          required
-        >
-          <option value="">Select a Category</option>
-          {
-            categories.map((category) => (
-              <option
-                key={category.id}
-                value={category.id}
-              >
-                {category.label}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </Form.Group>
+          {/* CATEGORY SELECT  */}
+          <Form.Group controlId="formSelect" className="mb-3">
+            <Form.Select aria-label="Category" name="categoryId" onChange={handleChange} className="mb-3 rounded-sm select" value={obj.categoryId} required>
+              <option value="">Select a Category</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.label}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
 
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
-    </Form>
+          {/* SUBMIT BUTTON  */}
+          <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+        </Form>
+      </div>
+    </div>
   );
 }
 
