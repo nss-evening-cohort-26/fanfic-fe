@@ -1,16 +1,25 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect, useState } from 'react';
 import { getAllPosts } from '../api/postData';
 import PostCard from '../components/cards/PostCard';
+import { getAllCategories, getPostsByCategory } from '../api/categoryData';
 
 function Posts() {
   const [posts, setPosts] = useState([]);
+  const [category, setCategory] = useState([]);
 
   const getAllThePosts = () => {
     getAllPosts().then(setPosts);
   };
 
+  const handleSort = (e) => {
+    getPostsByCategory(e.target.id).then((data) => setPosts(data));
+  };
+
   useEffect(() => {
     getAllThePosts();
+    getAllCategories().then(setCategory);
   }, []);
 
   return (
@@ -23,11 +32,22 @@ function Posts() {
                 <div className="flex flex-col h-full">
                   <h2 className="text-2xl inter-bold mb-2 text-center mt-3">Categories</h2>
                   <nav>
-                    <ul className="list-none text-center">
-                      <li>Category 1</li>
-                      <li>Category 2</li>
-                      <li>Category 3</li>
-                      <li>Category 4</li>
+                    <ul className="list-none ml-11">
+                      <li onClick={getAllThePosts} className="text-lg inter-bold mb-2">
+                        All
+                      </li>
+                      <li onClick={handleSort} className="text-lg inter-bold mb-2" id="1">
+                        {category[0].label}
+                      </li>
+                      <li onClick={handleSort} className="text-lg inter-bold mb-2" id="2">
+                        {category[1].label}
+                      </li>
+                      <li onClick={handleSort} className="text-lg inter-bold mb-2" id="3">
+                        {category[2].label}
+                      </li>
+                      <li onClick={handleSort} className="text-lg inter-bold mb-2" id="4">
+                        {category[3].label}
+                      </li>
                     </ul>
                   </nav>
                 </div>
