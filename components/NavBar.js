@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Navbar, Nav } from 'react-bootstrap';
-import { IoCreateOutline } from 'react-icons/io5';
+import { IoCreateOutline } from 'react-icons/io5'; // icon for navbar
 import Image from 'next/image';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
