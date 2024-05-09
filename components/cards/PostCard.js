@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { Badge, Button } from 'react-bootstrap';
 import getSingleUser from '../../api/userData';
 import { getSingleCategory } from '../../api/categoryData';
 import { deletePost } from '../../api/postData';
@@ -25,25 +25,25 @@ function PostCard({ postObj, onUpdate }) {
   }, [postObj]);
 
   return (
-    <Card key={postObj.id} style={{ width: '18rem', margin: '10px' }}>
+    <Card key={postObj.id} className="post-card">
       <Card.Body>
+        <Badge bg="light" text="dark">@{author.firstName} {author.lastName}</Badge>
+        <Badge bg="secondary">{category.label}</Badge>
         <Card.Title>{postObj.title}</Card.Title>
-        <p className="card-text bold">{postObj.content}</p>
-        <p className="card-text bold">{category.label}</p>
-        <p className="card-text bold">{author.firstName} {author.lastName}</p>
-        <Link href={`/post/${postObj.id}`} passHref>
-          <Button variant="primary" className="m-2">View</Button>
-        </Link>
-        {user?.id === author?.id && (
-        <div className="postBtns">
-          <Link href={`/post/edit/${postObj.id}`} passHref>
-            <Button variant="info">Edit</Button>
-          </Link>
-          <Button variant="danger" onClick={deleteThisPost} className="m-2">
-            DELETE
+        <Card.Text>{postObj.content}</Card.Text>
+        <div className="post-btns">
+          <Button variant="outline-light">
+            <Link href={`/post/${postObj.id}`} passHref>View</Link>
           </Button>
+          {user?.id === author?.id && (
+          <>
+            <Button variant="outline-light">
+              <Link href={`/post/edit/${postObj.id}`} passHref>Edit</Link>
+            </Button>
+            <Button variant="outline-light" onClick={deleteThisPost}>Delete</Button>
+          </>
+          )}
         </div>
-        )}
       </Card.Body>
     </Card>
   );
