@@ -13,13 +13,22 @@ function Posts() {
     getAllPosts().then(setPosts);
   };
 
+  const getCategories = async () => {
+    const data = await getAllCategories();
+    const categories = setCategory(data);
+
+    return { categories };
+  };
+
   const handleSort = (e) => {
     getPostsByCategory(e.target.id).then((data) => setPosts(data));
   };
 
+  console.warn(category);
+
   useEffect(() => {
     getAllThePosts();
-    getAllCategories().then(setCategory);
+    getCategories();
   }, []);
 
   return (
@@ -37,16 +46,16 @@ function Posts() {
                         All
                       </li>
                       <li onClick={handleSort} className="text-lg inter-bold mb-2" id="1">
-                        {category[0].label}
+                        {category[0]?.label}
                       </li>
                       <li onClick={handleSort} className="text-lg inter-bold mb-2" id="2">
-                        {category[1].label}
+                        {category[1]?.label}
                       </li>
                       <li onClick={handleSort} className="text-lg inter-bold mb-2" id="3">
-                        {category[2].label}
+                        {category[2]?.label}
                       </li>
                       <li onClick={handleSort} className="text-lg inter-bold mb-2" id="4">
-                        {category[3].label}
+                        {category[3]?.label}
                       </li>
                     </ul>
                   </nav>
