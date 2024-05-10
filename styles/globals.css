@@ -154,3 +154,29 @@ body {
 li {
   cursor: pointer;
 }
+
+.post-card {
+  color: #f8f9fa;
+  background-color: #0d0d0d;
+  margin: 20px 0;
+  border-bottom: 1px solid #ff5687;
+
+  button {
+    margin: 10px 10px 0 0;
+  }
+}
+
+.post-details {
+  margin-top: 50px;
+  background: inherit;
+  color: #f8f9fa;
+}
+
+.badge.text-dark,
+.card-text {
+  margin-bottom: 20px;
+}
+
+.badge {
+  margin-right: 10px;
+}
