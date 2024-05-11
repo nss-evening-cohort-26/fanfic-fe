@@ -180,3 +180,18 @@ li {
 .badge {
   margin-right: 10px;
 }
+
+.form-button {
+  color: #f8f9fa !important;
+  background-color: #0d0d0d !important;
+  margin: 20px 0;
+  border: 1px solid white;
+
+  button {
+    margin: 10px 10px 0 0;
+  }
+}
+
+.form-button:hover {
+  border: 1px solid white;
+}
