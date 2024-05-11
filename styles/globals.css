@@ -136,7 +136,7 @@ body {
 }
 
 .borders {
-  border-bottom: 2px solid #c84d85 !important;
+  border-bottom: 2px solid #ff5687 !important;
   border-right: none;
   border-top: none;
   border-left: none;
@@ -158,9 +158,10 @@ li {
 
 .post-card {
   color: #f8f9fa;
-  background-color: #0d0d0d;
+  /* background-color: #0d0d0d; */
+  background-color: #333333;
   margin: 20px 0;
-  border-bottom: 1px solid #ff5687;
+  border-bottom: 2px solid #ff5687;
 
   button {
     margin: 10px 10px 0 0;
@@ -180,6 +181,43 @@ li {
 
 .badge {
   margin-right: 10px;
+}
+
+.fonts {
+  font-size: 14px;
+}
+
+.social-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.social-list li {
+  padding: 10px;
+  color: #ff5687;
+  font-size: 19px;
+}
+
+.buttons button:nth-child(1) {
+  border: 1px solid #ff5687 !important;
+  color: #ff5687;
+  height: 40px;
+}
+
+.buttons button:nth-child(1):hover {
+  border: 1px solid #ff5687 !important;
+  color: #fff;
+  height: 40px;
+  background-color: #ff5687;
+}
+
+.buttons button:nth-child(2) {
+  border: 1px solid #ff5687 !important;
+  background-color: #ff5687;
+  color: #fff;
+  height: 40px;
 }
 
 .form-button {
