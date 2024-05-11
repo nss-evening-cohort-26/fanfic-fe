@@ -17,7 +17,7 @@ export default function ViewPost() {
   useEffect(() => {
     getPostDetails(id).then(setPostDetails);
     getPostComments(id).then(setCommentDetails);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

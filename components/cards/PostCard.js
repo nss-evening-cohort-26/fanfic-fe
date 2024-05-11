@@ -27,21 +27,29 @@ function PostCard({ postObj, onUpdate }) {
   return (
     <Card key={postObj.id} className="post-card">
       <Card.Body>
-        <Badge bg="light" text="dark">@{author.firstName} {author.lastName}</Badge>
+        <Badge bg="light" text="dark">
+          @{author.firstName} {author.lastName}
+        </Badge>
         <Badge bg="secondary">{category.label}</Badge>
         <Card.Title>{postObj.title}</Card.Title>
         <Card.Text>{postObj.content}</Card.Text>
         <div className="post-btns">
           <Button variant="outline-light">
-            <Link href={`/post/${postObj.id}`} passHref>View</Link>
+            <Link href={`/post/${postObj.id}`} passHref>
+              View
+            </Link>
           </Button>
           {user?.id === author?.id && (
-          <>
-            <Button variant="outline-light">
-              <Link href={`/post/edit/${postObj.id}`} passHref>Edit</Link>
-            </Button>
-            <Button variant="outline-light" onClick={deleteThisPost}>Delete</Button>
-          </>
+            <>
+              <Button variant="outline-light">
+                <Link href={`/post/edit/${postObj.id}`} passHref>
+                  Edit
+                </Link>
+              </Button>
+              <Button variant="outline-light" onClick={deleteThisPost}>
+                Delete
+              </Button>
+            </>
           )}
         </div>
       </Card.Body>

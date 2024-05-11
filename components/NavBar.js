@@ -12,7 +12,7 @@ export default function NavBar() {
     <Navbar bg="dark" variant="dark" className="nav">
       <div>
         <Link passHref href="/feed">
-          <Image src="/images/logo.png" alt="Plothole" height={40} width={300} />
+          <Image src="/images/logo.png" alt="Plothole" height={40} width={300} className="cursor-pointer" />
         </Link>
       </div>
       <div className="flex right-nav fw-semibold">

@@ -27,8 +27,7 @@ function CommentForm({ postId, obj }) {
   useEffect(() => {
     if (!user) return;
 
-    getSingleUser(user.id)
-      .then(setUserObj);
+    getSingleUser(user.id).then(setUserObj);
 
     if (obj) {
       setFormInput(obj);
@@ -59,7 +58,7 @@ function CommentForm({ postId, obj }) {
         window.location.reload();
       })
       .then(() => setShow(false));
-  // .catch((error) => console.error('Error creating comment:', error));
+    // .catch((error) => console.error('Error creating comment:', error));
   };
 
   return (
@@ -73,14 +72,7 @@ function CommentForm({ postId, obj }) {
           <Form.Group className="mb-3 d-flex row" controlId="formBasicInput">
             <Form.Label className="text-black">Leave a comment</Form.Label>
             <Form.Text className="secondary mb-3">Remember, comments are public and will be seen by others. Think - would I say this at a family dinner?</Form.Text>
-            <Form.Control
-              type="text"
-              autoComplete="off"
-              name="content"
-              value={formInput.content}
-              onChange={handleChange}
-              placeholder="Comment"
-            />
+            <Form.Control type="text" autoComplete="off" name="content" value={formInput.content} onChange={handleChange} placeholder="Comment" className="w-[90%] mx-auto rounded-sm" />
           </Form.Group>
           <Button variant="success" className="float-end" type="submit">
             Send

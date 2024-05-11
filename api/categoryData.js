@@ -44,8 +44,21 @@ const getAllCategories = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPostsByCategory = (categoryId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/category/${categoryId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then((resp) => resolve(resp.json()))
+    .catch(reject);
+});
+
 export {
   getPostCategories,
   getSingleCategory,
   getAllCategories,
+  getPostsByCategory,
 };
