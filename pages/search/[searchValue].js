@@ -25,8 +25,8 @@ export default function Search() {
 
   return (
     <>
-      <div className="text-center my-4">
-        <div className="d-flex flex-wrap">
+      <div className="my-4 flex justify-content-center">
+        <div className="d-flex flex-wrap mt-32 w-75">
           {filteredPosts.map((post) => <PostCard key={post.id} postObj={post} onUpdate={searchAllPosts} />)}
         </div>
       </div>
