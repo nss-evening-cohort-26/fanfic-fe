@@ -71,7 +71,9 @@ export default function PostForm({ obj }) {
           </Form.Group>
 
           {/* SUBMIT BUTTON  */}
-          <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+          <Button type="submit" className="form-button">
+            {obj.id ? 'Update' : 'Create'} Post
+          </Button>
         </Form>
       </div>
     </div>
